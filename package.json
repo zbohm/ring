@@ -1,0 +1,20 @@
+{
+  "name": "ring",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bn.js": "^5.1.1",
+    "elliptic": "^6.5.2",
+    "keccak": "^3.0.0",
+    "request": "^2.88.0",
+    "shuffle-array": "^1.0.1",
+    "xorshift": "^1.1.1",
+    "xorshift128plus": "0.0.1"
+  }
+}
