@@ -50,7 +50,7 @@ const Hasher = class Hasher{
         hash_array.push(this.hash_string(array[i].encode('hex').toString()));
       }else{
         hash_array.push(array[i]);
-        console.log("i "+i+ "array[i]"+array[i]);
+        //console.log("i "+i+ "array[i]"+array[i]);
         //throw 'hash_array() case not implemented';
       }
     }

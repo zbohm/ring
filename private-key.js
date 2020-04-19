@@ -20,9 +20,10 @@ const PrivateKey = class PrivateKey{
     console.log(message)
     const seed = this.hasher.hash_array([this.value,message_digest]);
 
-    let all_keys = foreign_keys.slice();
-    all_keys.push(this);
-    shuffle(all_keys);
+    let all_keys = [];
+    for (let i=0; i < foreign_keys.length; i++) {
+      all_keys.push(foreign_keys[i] === this.public_key ? this : foreign_keys[i])
+    }
 
     const q_array = this.generate_q(all_keys,seed); // hex numbers
     const w_array = this.generate_w(all_keys,seed); // hex number + 1 BN
@@ -38,16 +39,7 @@ const PrivateKey = class PrivateKey{
     const c_array = this.generate_c(all_keys,q_array,w_array,challenge);
     const r_array = this.generate_r(all_keys,q_array,w_array,c_array,challenge);
 
-    let public_keys = [];
-    for(let i=0;i<all_keys.length;i++){
-      if(all_keys[i] instanceof PrivateKey){
-        public_keys.push(all_keys[i].public_key);
-      }else{
-        public_keys.push(all_keys[i]);
-      }
-    }
-
-    return new Signature.Signature(this.key_image,c_array,r_array,public_keys,this.hasher);
+    return new Signature.Signature(this.key_image,c_array,r_array,this.hasher);
   }
 
   generate_r(all_keys,q_array,w_array,c_array,challenge){
