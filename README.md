@@ -10,4 +10,6 @@ npm install
 
 node index
 
+node index-linked-ring.js
+
 example will be more developed but it creates address and key and uses in a one time ring signature then verification and a non compliant check on a second group that fails
